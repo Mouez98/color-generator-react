@@ -11,8 +11,10 @@ function App() {
     e.preventDefault();
 
    try { 
-     const colors = new Values(color).all(20);
-    console.log(colors); 
+     const colors = new Values(color).all(40);
+     setColorsList(colors)
+    //  console.log(colors)
+    //  colors.map(color => console.log(color.rgb, color.type))
     setError(false)
   } catch(error) {
     setError(true)
@@ -27,7 +29,6 @@ function App() {
         <form onSubmit={onSubmitHandler}>
           <input
             type="text"
-            placeholder="#f00"
             value={color}
             onChange={(e) => setColor(e.target.value)}
             className={`${error ? 'error' : ''}`}
@@ -39,7 +40,11 @@ function App() {
         </form>
       </section>
       <section className="colors">
-        <div className="color"></div>
+        { colorsList.map((color, index)=> {
+          console.log(color)
+          return <SingleColor key={index} {...color} index={index}/>
+        })}
+        
       </section>
     </>
   );
