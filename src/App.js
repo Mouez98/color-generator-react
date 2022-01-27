@@ -11,7 +11,7 @@ function App() {
     e.preventDefault();
 
    try { 
-     const colors = new Values(color).all(40);
+     const colors = new Values(color).all(10);
      setColorsList(colors)
     //  console.log(colors)
     //  colors.map(color => console.log(color.rgb, color.type))
@@ -41,8 +41,7 @@ function App() {
       </section>
       <section className="colors">
         { colorsList.map((color, index)=> {
-          console.log(color)
-          return <SingleColor key={index} {...color} index={index}/>
+          return <SingleColor key={index} {...color} index={index} hexColor={color.hex}/>
         })}
         
       </section>
